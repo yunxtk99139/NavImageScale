@@ -1,0 +1,2 @@
+# NavImageScale
+仿照QQ空间的图片下拉放大，以及上拉navigationBar显示与隐藏
