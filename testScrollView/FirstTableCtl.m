@@ -28,20 +28,15 @@ static CGFloat ImageHight = 200.0f;
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.contentInset = UIEdgeInsetsMake(ImageHight-NavigationBarHight, 0, 0, 0);
-//    [self.tableView addObserver:self forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionNew context:nil];
     UIImageView* imageView = [[UIImageView alloc] initWithImage:image];
     imageView.contentMode = UIViewContentModeScaleAspectFill;
     _imageView = imageView;
    _imageView.frame = CGRectMake(0, -ImageHight, SCREENWIDHT, ImageHight);
     [self.tableView addSubview:_imageView];
 }
-//- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context{
-//    if([keyPath isEqualToString:@"contentOffset"]){
-//    }
-//}
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    if (scrollView.contentOffset.y<-320) {
-        scrollView.contentOffset = CGPointMake(0, -320);//限制下拉距离
+    if (scrollView.contentOffset.y<-(ImageHight+100)) {
+        scrollView.contentOffset = CGPointMake(0, -(ImageHight+100));//限制下拉距离
     }
     UIColor * color = [UIColor colorWithRed:0/255.0 green:175/255.0 blue:240/255.0 alpha:1];
     CGFloat offsetY = scrollView.contentOffset.y+ImageHight-NavigationBarHight+STATUSBARHEIGHT;
